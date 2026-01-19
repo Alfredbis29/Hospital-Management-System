@@ -11,20 +11,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="min-h-screen flex flex-col bg-gray-50 font-sans">
     <%= render 'shared/navbar' %>
     
-    <main class="main-content">
+    <main class="flex-1 max-w-7xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
       <%= render 'shared/flash' %>
       <%= yield %>
     </main>
     
-    <footer class="footer">
-      <p>&copy; <%= Date.current.year %> Hospital Management System. All rights reserved.</p>
+    <footer class="bg-gray-900 text-gray-400 text-center py-6">
+      <p class="text-sm">&copy; <%= Date.current.year %> Hospital Management System. All rights reserved.</p>
     </footer>
   </body>
 </html>

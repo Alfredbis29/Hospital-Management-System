@@ -1,18 +1,27 @@
-<nav class="navbar">
-  <div class="navbar-brand">
-    <%= link_to 'Hospital Management System', root_path, class: 'navbar-logo' %>
-  </div>
-  
-  <div class="navbar-menu">
-    <% if user_signed_in? %>
-      <span class="navbar-user">Welcome, <%= current_user.email %></span>
-      <%= link_to 'Home', root_path, class: 'navbar-link' %>
-      <%= link_to 'Edit Profile', edit_user_registration_path, class: 'navbar-link' %>
-      <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'navbar-btn navbar-btn-danger' %>
-    <% else %>
-      <%= link_to 'Sign In', new_user_session_path, class: 'navbar-link' %>
-      <%= link_to 'Sign Up', new_user_registration_path, class: 'navbar-btn navbar-btn-primary' %>
-    <% end %>
+<nav class="bg-gradient-to-r from-blue-900 to-blue-700 shadow-lg sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <%= link_to root_path, class: "text-white font-bold text-xl hover:text-blue-200 transition" do %>
+          🏥 Hospital Management
+        <% end %>
+      </div>
+      
+      <!-- Navigation Links -->
+      <div class="flex items-center space-x-4">
+        <% if user_signed_in? %>
+          <span class="text-blue-200 text-sm hidden sm:block">
+            Welcome, <%= current_user.email %>
+          </span>
+          <%= link_to 'Home', root_path, class: "text-white hover:bg-blue-800 px-3 py-2 rounded-md text-sm font-medium transition" %>
+          <%= link_to 'Edit Profile', edit_user_registration_path, class: "text-white hover:bg-blue-800 px-3 py-2 rounded-md text-sm font-medium transition" %>
+          <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: "bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium transition" %>
+        <% else %>
+          <%= link_to 'Sign In', new_user_session_path, class: "text-white hover:bg-blue-800 px-3 py-2 rounded-md text-sm font-medium transition" %>
+          <%= link_to 'Sign Up', new_user_registration_path, class: "bg-white text-blue-700 hover:bg-blue-50 px-4 py-2 rounded-md text-sm font-medium transition" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </nav>
-
