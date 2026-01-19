@@ -1,92 +1,411 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
+ * Hospital Management System - Professional Styles
  *= require_tree .
  *= require_self
  */
 
-/* Welcome Page Styles */
+/* ========== CSS Variables ========== */
+:root {
+  --primary-color: #0d6efd;
+  --primary-dark: #0b5ed7;
+  --secondary-color: #6c757d;
+  --success-color: #198754;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #0dcaf0;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --white: #ffffff;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #6c757d;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* ========== Reset & Base ========== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--dark-color);
+  background-color: var(--gray-100);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========== Navbar ========== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+  box-shadow: var(--box-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.navbar-logo:hover {
+  color: var(--gray-200);
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-user {
+  color: var(--gray-300);
+  font-size: 0.9rem;
+  margin-right: 1rem;
+}
+
+.navbar-link {
+  color: var(--white);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  transition: background-color 0.2s ease;
+}
+
+.navbar-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-btn {
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.navbar-btn-primary {
+  background-color: var(--white);
+  color: var(--primary-color);
+}
+
+.navbar-btn-primary:hover {
+  background-color: var(--gray-200);
+}
+
+.navbar-btn-danger {
+  background-color: var(--danger-color);
+  color: var(--white);
+}
+
+.navbar-btn-danger:hover {
+  background-color: #bb2d3b;
+}
+
+/* ========== Main Content ========== */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ========== Flash Messages ========== */
+.flash {
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flash-notice, .flash-success {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+
+.flash-alert, .flash-error {
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+
+/* ========== Welcome Page ========== */
 .welcome-container {
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 40px;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 3rem;
+  box-shadow: var(--box-shadow-lg);
   text-align: center;
-  background: #f8f9fa;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  max-width: 700px;
+  margin: 2rem auto;
 }
 
 .welcome-container h1 {
-  color: #2c3e50;
-  margin-bottom: 20px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--dark-color);
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .welcome-container p {
-  color: #555;
-  font-size: 1.1em;
+  color: var(--gray-600);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-container strong {
+  color: var(--primary-color);
 }
 
 .user-actions {
-  margin-top: 30px;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-/* Button Styles */
+/* ========== Buttons ========== */
 .btn {
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: var(--border-radius);
   border: none;
-  border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
-  font-size: 1em;
-  background-color: #3498db;
-  color: white;
+  transition: all 0.2s ease;
 }
 
-.btn:hover {
-  background-color: #2980b9;
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-1px);
 }
 
 .btn-danger {
-  background-color: #e74c3c;
+  background-color: var(--danger-color);
+  color: var(--white);
 }
 
 .btn-danger:hover {
-  background-color: #c0392b;
+  background-color: #bb2d3b;
+  transform: translateY(-1px);
 }
 
-/* Flash Message Styles */
-.flash {
-  padding: 15px 20px;
-  margin: 10px auto;
-  max-width: 800px;
-  border-radius: 5px;
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--white);
+}
+
+.btn-secondary:hover {
+  background-color: #5c636a;
+}
+
+/* ========== Forms (Devise) ========== */
+.auth-container {
+  max-width: 450px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--box-shadow-lg);
+}
+
+.auth-container h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--dark-color);
   text-align: center;
+  margin-bottom: 2rem;
 }
 
-.flash-notice {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
+.form-group {
+  margin-bottom: 1.25rem;
 }
 
-.flash-alert {
+.form-group label {
+  display: block;
+  font-weight: 500;
+  color: var(--dark-color);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="text"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid var(--gray-300);
+  border-radius: var(--border-radius);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+}
+
+.form-group input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+.form-hint {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  margin-top: 0.25rem;
+}
+
+.form-actions {
+  margin-top: 1.5rem;
+}
+
+.form-actions .btn {
+  width: 100%;
+  padding: 0.875rem;
+}
+
+.auth-links {
+  margin-top: 1.5rem;
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--gray-200);
+}
+
+.auth-links a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.auth-links a:hover {
+  text-decoration: underline;
+}
+
+/* ========== Footer ========== */
+.footer {
+  background-color: var(--dark-color);
+  color: var(--gray-400);
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: auto;
+}
+
+.footer p {
+  font-size: 0.9rem;
+}
+
+/* ========== Error Messages ========== */
+.error-messages {
   background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
+  border: 1px solid #f5c2c7;
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-/* Container */
-.container {
-  padding: 20px;
+.error-messages h3 {
+  color: #842029;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.error-messages ul {
+  color: #842029;
+  margin-left: 1.25rem;
+  font-size: 0.9rem;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .navbar-menu {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+  
+  .welcome-container {
+    padding: 2rem 1.5rem;
+  }
+  
+  .welcome-container h1 {
+    font-size: 1.75rem;
+  }
+  
+  .auth-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
 }
