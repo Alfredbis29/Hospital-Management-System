@@ -1,18 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>HospitalManagementSystem</title>
+    <title>Hospital Management System</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <%= render 'shared/navbar' %>
+    
+    <main class="main-content">
+      <%= render 'shared/flash' %>
+      <%= yield %>
+    </main>
+    
+    <footer class="footer">
+      <p>&copy; <%= Date.current.year %> Hospital Management System. All rights reserved.</p>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,16 @@
+<div class="welcome-container">
+  <h1>🏥 Hospital Management System</h1>
+  
+  <% if user_signed_in? %>
+    <p>Hello, <strong><%= current_user.email %></strong>!</p>
+    <p>You are successfully logged in to the Hospital Management System.</p>
+    <p style="color: var(--gray-500); font-size: 0.9rem; margin-top: 1rem;">
+      Manage patients, doctors, appointments, and more from your dashboard.
+    </p>
+    
+    <div class="user-actions">
+      <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-primary' %>
+      <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+    </div>
+  <% end %>
+</div>
