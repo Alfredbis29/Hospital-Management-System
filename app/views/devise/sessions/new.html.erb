@@ -1,33 +1,49 @@
-<div class="max-w-md mx-auto mt-10">
-  <div class="bg-white rounded-2xl shadow-xl p-8">
-    <h2 class="text-2xl font-bold text-gray-900 text-center mb-8">Welcome Back</h2>
-
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-6" }) do |f| %>
-      <div>
-        <%= f.label :email, class: "block text-sm font-medium text-gray-700 mb-1" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter your email", class: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" %>
+<div class="min-h-[70vh] flex items-center justify-center">
+  <div class="w-full max-w-md">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/30">
+        <span class="text-3xl">🏥</span>
       </div>
+      <h1 class="text-2xl font-bold text-slate-900">Welcome back</h1>
+      <p class="text-slate-500 mt-2">Sign in to your account to continue</p>
+    </div>
 
-      <div>
-        <%= f.label :password, class: "block text-sm font-medium text-gray-700 mb-1" %>
-        <%= f.password_field :password, autocomplete: "current-password", placeholder: "Enter your password", class: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" %>
-      </div>
+    <!-- Form Card -->
+    <div class="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-200 p-8">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="space-y-5">
+          <div>
+            <%= f.label :email, class: "block text-sm font-medium text-slate-700 mb-2" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "you@example.com", class: "w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" %>
+          </div>
 
-      <% if devise_mapping.rememberable? %>
-        <div class="flex items-center">
-          <%= f.check_box :remember_me, class: "h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" %>
-          <%= f.label :remember_me, "Remember me", class: "ml-2 block text-sm text-gray-700" %>
+          <div>
+            <%= f.label :password, class: "block text-sm font-medium text-slate-700 mb-2" %>
+            <%= f.password_field :password, autocomplete: "current-password", placeholder: "••••••••", class: "w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="flex items-center justify-between">
+              <label class="flex items-center">
+                <%= f.check_box :remember_me, class: "w-4 h-4 text-blue-600 bg-slate-50 border-slate-300 rounded focus:ring-blue-500" %>
+                <span class="ml-2 text-sm text-slate-600">Remember me</span>
+              </label>
+              <%= link_to "Forgot password?", new_password_path(resource_name), class: "text-sm text-blue-600 hover:text-blue-700 font-medium" %>
+            </div>
+          <% end %>
+
+          <div class="pt-2">
+            <%= f.submit "Sign In", class: "w-full py-3.5 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all cursor-pointer" %>
+          </div>
         </div>
       <% end %>
-
-      <div>
-        <%= f.submit "Sign In", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition shadow-md hover:shadow-lg cursor-pointer" %>
-      </div>
-    <% end %>
-
-    <div class="mt-6 pt-6 border-t border-gray-200 text-center space-y-2">
-      <%= link_to "Don't have an account? Sign up", new_registration_path(resource_name), class: "block text-blue-600 hover:text-blue-800 text-sm" %>
-      <%= link_to "Forgot your password?", new_password_path(resource_name), class: "block text-gray-500 hover:text-gray-700 text-sm" %>
     </div>
+
+    <!-- Footer -->
+    <p class="text-center mt-6 text-slate-500">
+      Don't have an account?
+      <%= link_to "Sign up for free", new_registration_path(resource_name), class: "text-blue-600 hover:text-blue-700 font-semibold" %>
+    </p>
   </div>
 </div>

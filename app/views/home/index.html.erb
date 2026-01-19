@@ -1,22 +1,75 @@
-<div class="max-w-2xl mx-auto mt-10">
-  <div class="bg-white rounded-2xl shadow-xl p-8 sm:p-12 text-center">
-    <div class="text-6xl mb-6">🏥</div>
-    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-      Hospital Management System
-    </h1>
-    
-    <% if user_signed_in? %>
-      <p class="text-lg text-gray-600 mb-2">
-        Hello, <span class="font-semibold text-blue-600"><%= current_user.email %></span>!
-      </p>
-      <p class="text-gray-500 mb-8">
-        You are successfully logged in. Manage patients, doctors, appointments, and more.
-      </p>
-      
-      <div class="flex flex-col sm:flex-row justify-center gap-4">
-        <%= link_to 'Edit Profile', edit_user_registration_path, class: "inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition shadow-md hover:shadow-lg" %>
-        <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: "inline-flex items-center justify-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition shadow-md hover:shadow-lg" %>
-      </div>
-    <% end %>
+<% if user_signed_in? %>
+  <!-- Dashboard Header -->
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-slate-900">Welcome back! 👋</h1>
+    <p class="text-slate-500 mt-1">Here's what's happening with your hospital today.</p>
   </div>
-</div>
+
+  <!-- Stats Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-sm font-medium text-slate-500">Total Patients</p>
+          <p class="text-3xl font-bold text-slate-900 mt-1">1,234</p>
+        </div>
+        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+          <span class="text-2xl">👥</span>
+        </div>
+      </div>
+      <div class="mt-4 flex items-center text-sm">
+        <span class="text-emerald-600 font-medium">↑ 12%</span>
+        <span class="text-slate-400 ml-2">from last month</span>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-sm font-medium text-slate-500">Appointments</p>
+          <p class="text-3xl font-bold text-slate-900 mt-1">56</p>
+        </div>
+        <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
+          <span class="text-2xl">📅</span>
+        </div>
+      </div>
+      <div class="mt-4 flex items-center text-sm">
+        <span class="text-emerald-600 font-medium">↑ 8%</span>
+        <span class="text-slate-400 ml-2">from last week</span>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-sm font-medium text-slate-500">Doctors</p>
+          <p class="text-3xl font-bold text-slate-900 mt-1">24</p>
+        </div>
+        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+          <span class="text-2xl">👨‍⚕️</span>
+        </div>
+      </div>
+      <div class="mt-4 flex items-center text-sm">
+        <span class="text-slate-400">Active staff members</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Info Card -->
+  <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-8 text-white shadow-xl shadow-blue-500/20">
+    <div class="flex items-center space-x-4 mb-6">
+      <div class="w-16 h-16 bg-white/20 backdrop-blur rounded-2xl flex items-center justify-center">
+        <span class="text-3xl">👤</span>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold"><%= current_user.email.split('@').first.capitalize %></h2>
+        <p class="text-blue-200"><%= current_user.email %></p>
+      </div>
+    </div>
+    <p class="text-blue-100 mb-6">You are logged in to the Hospital Management System. Manage patients, doctors, appointments, and more from your dashboard.</p>
+    <div class="flex flex-wrap gap-3">
+      <%= link_to 'Edit Profile', edit_user_registration_path, class: "inline-flex items-center px-5 py-2.5 bg-white text-blue-600 font-medium rounded-xl hover:bg-blue-50 transition-colors" %>
+      <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: "inline-flex items-center px-5 py-2.5 bg-white/20 backdrop-blur text-white font-medium rounded-xl hover:bg-white/30 transition-colors cursor-pointer" %>
+    </div>
+  </div>
+<% end %>

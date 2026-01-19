@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+/* Custom font */
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* Ensure buttons from forms display properly */
+form button, form input[type="submit"] {
+  cursor: pointer;
+}

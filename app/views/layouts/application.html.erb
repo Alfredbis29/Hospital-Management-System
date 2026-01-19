@@ -9,23 +9,33 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    
+    <style>
+      * { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
   </head>
 
-  <body class="min-h-screen flex flex-col bg-gray-50 font-sans">
+  <body class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
     <%= render 'shared/navbar' %>
     
-    <main class="flex-1 max-w-7xl mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
-      <%= render 'shared/flash' %>
-      <%= yield %>
+    <main class="flex-1">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <%= render 'shared/flash' %>
+        <%= yield %>
+      </div>
     </main>
     
-    <footer class="bg-gray-900 text-gray-400 text-center py-6">
-      <p class="text-sm">&copy; <%= Date.current.year %> Hospital Management System. All rights reserved.</p>
+    <footer class="bg-slate-900 border-t border-slate-800">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="text-center">
+          <p class="text-slate-400 text-sm">&copy; <%= Date.current.year %> Hospital Management System. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
