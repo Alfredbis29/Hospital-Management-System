@@ -13,3 +13,54 @@
  *= require_tree .
  *= require_self
  */
+
+/* Welcome Page Styles */
+.welcome-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 40px;
+  text-align: center;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.welcome-container h1 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.welcome-container p {
+  color: #555;
+  font-size: 1.1em;
+}
+
+.user-actions {
+  margin-top: 30px;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1em;
+  background-color: #3498db;
+  color: white;
+}
+
+.btn:hover {
+  background-color: #2980b9;
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+}
